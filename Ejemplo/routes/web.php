@@ -14,6 +14,10 @@ use App\Http\Controllers\MyFirstController;
 |
 */
 
+Route::get('/{category}/{slug}/{uuid}', function($category = 'a', $slug = 'post') {
+    echo $category . '<br />' . $slug;
+})->whereAlpha('category')->whereAlphaNumeric('slug')->whereUuid('uuid');
+
 Route::view('/','home');
 Route::get('/contacto', [MyFirstController::class, 'contactPage']);
 Route::post('/contacto', [MyFirstController::class, 'processContact']);
